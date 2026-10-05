@@ -7,8 +7,7 @@ import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.concurrent.*;
 
 public class PluginManager {
@@ -132,6 +131,40 @@ public class PluginManager {
             copyAndLoadIfModified(origin, oldHash, newHash, () -> cancelRetryTask(origin));
         } catch (IOException e) {
             // Retry on next scheduled execution.
+        }
+    }
+
+    /**
+     * Reconciles the plugin registry with the current state of the plugin directory after a
+     * WatchService overflow event.
+     *
+     * @param origin the plugin directory to rescan
+     * @throws IOException if the plugin directory cannot be scanned
+     */
+    public void overflow(Path origin) throws IOException {
+        Set<Path> currentPlugins = new HashSet<>(PluginScanner.findPlugins(origin));
+        Set<Path> registeredPlugins = pluginRegistry.getPaths();
+
+        HashSet<Path> onlyInDirectory = new HashSet<>(currentPlugins);
+        onlyInDirectory.removeAll(registeredPlugins);
+
+        HashSet<Path> onlyInRegistry = new HashSet<>(registeredPlugins);
+        onlyInRegistry.removeAll(currentPlugins);
+
+        HashSet<Path> commons = new HashSet<>(currentPlugins);
+        commons.retainAll(registeredPlugins);
+
+        // JAR in both sets
+        for (Path path : commons) {
+            updatePlugin(path);
+        }
+
+        for (Path path : onlyInDirectory) {
+            addPlugin(path);
+        }
+
+        for (Path path : onlyInRegistry) {
+            removePlugin(path);
         }
     }
 }

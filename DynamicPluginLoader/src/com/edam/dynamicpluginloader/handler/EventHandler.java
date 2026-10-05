@@ -33,9 +33,7 @@ public class EventHandler {
             case CREATED -> pluginManager.addPlugin(jarPath);
             case MODIFIED -> pluginManager.updatePlugin(jarPath);
             case DELETED -> pluginManager.removePlugin(jarPath);
-/*            case OVERFLOW -> {
-                // TODO
-            }*/
+            case OVERFLOW -> pluginManager.overflow(jarPath);
         }
     }
 

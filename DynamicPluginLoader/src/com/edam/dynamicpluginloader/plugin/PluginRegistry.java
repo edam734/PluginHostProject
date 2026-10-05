@@ -1,11 +1,11 @@
 package com.edam.dynamicpluginloader.plugin;
 
 import java.io.IOException;
-import java.io.UncheckedIOException;
 import java.nio.file.Path;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class PluginRegistry {
@@ -47,16 +47,14 @@ public class PluginRegistry {
      * found, its associated resources are closed before the plugin is returned.
      *
      * @param jarName the path whose associated plugin is to be removed
-     * @return the removed plugin, or {@code null} if no mapping existed
      * @see Map#remove(Object)
      */
-    public LoadedPlugin remove(Path jarName) {
+    public void remove(Path jarName) {
         LoadedPlugin plugin = loadedPlugins.remove(jarName);
 
         if (plugin != null) {
             close(plugin);
         }
-        return plugin;
     }
 
     private void close(LoadedPlugin plugin) {
@@ -81,8 +79,19 @@ public class PluginRegistry {
     }
 
     /**
-     * Closes all loaded plugins and removes them from the registry.
-     * Each plugin is closed before the registry is cleared.
+     * Returns an unmodifiable view of the paths currently used as keys in the plugin registry.
+     *
+     * @return an unmodifiable set view of the registered plugin paths
+     * @see Map#keySet()
+     * @see Collections#unmodifiableSet(Set)
+     */
+    public Set<Path> getPaths() {
+        return Collections.unmodifiableSet(loadedPlugins.keySet());
+    }
+
+    /**
+     * Closes all loaded plugins and removes them from the registry. Each plugin is closed before
+     * the registry is cleared.
      */
     public void closeAll() {
         loadedPlugins.values().forEach(this::close);
