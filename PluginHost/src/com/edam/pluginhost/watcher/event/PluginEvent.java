@@ -1,4 +1,4 @@
-package com.edam.dynamicpluginloader.watcher.event;
+package com.edam.pluginhost.watcher.event;
 
 import java.nio.file.Path;
 

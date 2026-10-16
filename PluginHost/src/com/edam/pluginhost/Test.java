@@ -1,11 +1,11 @@
-package com.edam.dynamicpluginloader;
+package com.edam.pluginhost;
 
-import com.edam.dynamicpluginloader.handler.EventHandler;
-import com.edam.dynamicpluginloader.plugin.PluginCache;
-import com.edam.dynamicpluginloader.plugin.PluginManager;
-import com.edam.dynamicpluginloader.plugin.PluginRegistry;
-import com.edam.dynamicpluginloader.watcher.PluginWatcher;
-import com.edam.dynamicpluginloader.watcher.event.AppEvent;
+import com.edam.pluginhost.handler.EventHandler;
+import com.edam.pluginhost.plugin.PluginCache;
+import com.edam.pluginhost.plugin.PluginManager;
+import com.edam.pluginhost.plugin.PluginRegistry;
+import com.edam.pluginhost.watcher.PluginWatcher;
+import com.edam.pluginhost.watcher.event.AppEvent;
 
 import java.io.IOException;
 import java.util.concurrent.*;

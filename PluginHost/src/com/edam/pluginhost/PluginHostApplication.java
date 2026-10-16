@@ -1,8 +1,8 @@
-package com.edam.dynamicpluginloader;
+package com.edam.pluginhost;
 
-import com.edam.dynamicpluginloader.plugin.LoadedPlugin;
-import com.edam.dynamicpluginloader.plugin.PluginLoader;
-import com.edam.dynamicpluginloader.plugin.PluginScanner;
+import com.edam.pluginhost.plugin.LoadedPlugin;
+import com.edam.pluginhost.plugin.PluginLoader;
+import com.edam.pluginhost.plugin.PluginScanner;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -17,7 +17,7 @@ import java.util.Optional;
  * declared plugin classes, loads them through dedicated class loaders,
  * and exposes them through the common Plugin API.
  */
-public class DynamicPluginLoaderApplication {
+public class PluginHostApplication {
 
     public static void main(String[] args) throws IOException {
         Path pluginsDir = Paths.get("plugins");

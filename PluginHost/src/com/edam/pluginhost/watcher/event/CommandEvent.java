@@ -1,4 +1,4 @@
-package com.edam.dynamicpluginloader.watcher.event;
+package com.edam.pluginhost.watcher.event;
 
 public record CommandEvent(String input) implements AppEvent {
 

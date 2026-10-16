@@ -1,4 +1,4 @@
-package com.edam.dynamicpluginloader.util;
+package com.edam.pluginhost.util;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package com.edam.dynamicpluginloader.plugin;
+package com.edam.pluginhost.plugin;
 
 import com.edam.pluginapi.Plugin;
 

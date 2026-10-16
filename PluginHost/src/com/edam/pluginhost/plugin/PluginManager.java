@@ -1,6 +1,6 @@
-package com.edam.dynamicpluginloader.plugin;
+package com.edam.pluginhost.plugin;
 
-import com.edam.dynamicpluginloader.util.FileHasher;
+import com.edam.pluginhost.util.FileHasher;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;

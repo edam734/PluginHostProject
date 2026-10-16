@@ -1,9 +1,9 @@
-package com.edam.dynamicpluginloader.handler;
+package com.edam.pluginhost.handler;
 
-import com.edam.dynamicpluginloader.plugin.PluginManager;
-import com.edam.dynamicpluginloader.watcher.event.AppEvent;
-import com.edam.dynamicpluginloader.watcher.event.CommandEvent;
-import com.edam.dynamicpluginloader.watcher.event.PluginEvent;
+import com.edam.pluginhost.plugin.PluginManager;
+import com.edam.pluginhost.watcher.event.AppEvent;
+import com.edam.pluginhost.watcher.event.CommandEvent;
+import com.edam.pluginhost.watcher.event.PluginEvent;
 
 import java.io.IOException;
 import java.nio.file.Path;

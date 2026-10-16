@@ -14,6 +14,7 @@ public class TimePlugin implements Plugin {
 
     @Override
     public void execute() {
+        System.out.println("modified");
         LocalDateTime myDateTime = LocalDateTime.now();
         DateTimeFormatter formatterUS = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss", Locale.US);
         String formattedDate = myDateTime.format(formatterUS);
